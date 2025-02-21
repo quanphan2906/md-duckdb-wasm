@@ -1,0 +1,24 @@
+Species Name,Scientific Name,Wingspan (cm),Weight (kg),Habitat,Population Status
+Mallard,Anas platyrhynchos,81,1.2,"Wetlands, lakes, rivers",Least Concern
+Northern Pintail,Anas acuta,79,1.0,"Marshes, tundra",Least Concern
+Wood Duck,Aix sponsa,70,0.7,"Swamps, wooded wetlands",Least Concern
+American Black Duck,Anas rubripes,63,1.3,Freshwater wetlands,Least Concern
+Canvasback,Aythya valisineria,83,1.5,"Lakes, marshes",Least Concern
+Redhead,Aythya americana,84,1.4,"Ponds, lakes",Least Concern
+Blue-winged Teal,Spatula discors,58,0.4,"Wetlands, coastal marshes",Least Concern
+Green-winged Teal,Anas crecca,59,0.3,"Marshes, shallow lakes",Least Concern
+Gadwall,Mareca strepera,85,1.2,"Wetlands, ponds",Least Concern
+Eurasian Wigeon,Mareca penelope,86,0.9,"Lakes, estuaries",Least Concern
+American Wigeon,Mareca americana,84,1.1,"Marshes, ponds",Least Concern
+Ring-necked Duck,Aythya collaris,79,0.8,"Lakes, swamps",Least Concern
+Lesser Scaup,Aythya affinis,76,0.9,"Freshwater lakes, marshes",Least Concern
+Greater Scaup,Aythya marila,80,1.0,"Tundra ponds, coastal bays",Least Concern
+Common Eider,Somateria mollissima,105,2.0,"Coastal waters, islands",Least Concern
+King Eider,Somateria spectabilis,102,1.8,"Arctic coasts, tundra ponds",Least Concern
+Harlequin Duck,Histrionicus histrionicus,69,0.7,"Mountain rivers, rocky coasts",Least Concern
+Surf Scoter,Melanitta perspicillata,80,1.2,"Coastal waters, bays",Least Concern
+Black Scoter,Melanitta americana,79,1.1,"Lakes, ocean shores",Least Concern
+White-winged Scoter,Melanitta deglandi,85,1.4,"Coastal waters, lakes",Least Concern
+Long-tailed Duck,Clangula hyemalis,76,0.9,"Arctic lakes, ocean coasts",Least Concern
+Bufflehead,Bucephala albeola,55,0.4,"Lakes, coastal bays",Least Concern
+Common Goldeneye,Bucephala clangula,76,1.0,"Lakes, rivers",Least Concern
