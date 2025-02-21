@@ -10,7 +10,7 @@ I want to experiment with MotherDuck's 1.5-tier architecture by simulating a set
 -   **Step 2:** Allow users to run SQL queries against the cached dataset in the browser.
 -   **Step 3:** Display query results instantly.
 
-## 🚀 What I Learned About DuckDB-Wasm
+## 🚀 What I Learned
 
 ### 1️⃣ WASM is not scary!
 
