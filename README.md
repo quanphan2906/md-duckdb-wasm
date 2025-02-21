@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simulating MotherDuck's 1.5-Tier Architecture in the Browser
 
-## Getting Started
+![1.5-tier architecture](15tierarch.png)
 
-First, run the development server:
+I want to experiment with MotherDuck's 1.5-tier architecture by simulating a setup where **DuckDB-Wasm runs in the browser**, caching data fetched from a **MotherDuck remote server**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 💡 Architecture Overview
+
+-   **Step 1:** Fetch data from MotherDuck and store it in DuckDB-Wasm.
+-   **Step 2:** Allow users to run SQL queries against the cached dataset in the browser.
+-   **Step 3:** Display query results instantly.
+
+## 🚀 What I Learned About DuckDB-Wasm
+
+### 1️⃣ WASM is not scary!
+
+WASM felt mystical but working with DuckDB-Wasm demystified it:
+
+-   WASM is a compilation target for languages like C or Rust. Since DuckDB was written in C, compiling it to WASM instead maintaining a separate TypeScript version avoids duplicate code and results in better performance.
+
+-   Loading WASM is simple: DuckDB-Wasm exposes a clean API that lets me set up a fully functional database in just a few lines of code.
+
+-   One caveat: `webpack` doesn't automatically bundle wasm files. My `next.config.mjs` file demonstrates how to configure `webpack` to do so in a Next.js application.
+
+### 2️⃣ DuckDB-Wasm Can Cache and Query Remote Data from MotherDuck
+
+By fetching data from MotherDuck and storing it in DuckDB-Wasm’s in-memory storage, I was able to create a local cache for running queries in the browser.
+
+This approach reduces latency for repeated queries and enables offline query execution once data is cached. It becomes much clearer how projects like [Mosaic](https://github.com/uwdata/mosaic) can load so much data so quickly.
+
+### 3️⃣ The `motherduck` Extension Is Not Available in DuckDB-Wasm
+
+I initially planned to execute a dual query in browser, referencing both a local DuckDB-Wasm database and a remote MotherDuck database in the same SQL statement. However, I was surprised when I encountered the error...
+
+```
+Extension https://extensions.duckdb.org/v1.1.1/wasm_eh/motherduck.duckdb_extension.wasm is not available
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+... when I tried to `LOAD motherduck`. Turns out `motherduck` extension is not available in DuckDB-Wasm.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **Question for the team:** Is the lack of `motherduck` extension in Wasm intentional, or are there plans to support it in the future?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+Clone this repository and run the development server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open http://localhost:3000 in your browser to start querying!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👋🏼 That's it!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project was a fascinating deep dive into the current capabilities of DuckDB-Wasm + MotherDuck and where things could go next. I'd love to hear your thoughts!
